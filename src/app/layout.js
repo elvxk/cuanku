@@ -1,6 +1,7 @@
 import localFont from "next/font/local";
 import { Roboto_Condensed, Bebas_Neue, Space_Grotesk } from "next/font/google";
 import "./globals.css";
+import { Toaster } from "@/components/ui/toaster";
 
 const roboto = Roboto_Condensed({ subsets: ["latin"], weight: ["100", "900"] });
 const bebas = Bebas_Neue({ subsets: ["latin"], weight: ["400"] });
@@ -18,6 +19,7 @@ export default function RootLayout({ children }) {
         className={`${bebas.className} ${space.className} ${roboto.className} antialiased`}
       >
         <div className="container mx-auto">{children}</div>
+        <Toaster />
       </body>
     </html>
   );
