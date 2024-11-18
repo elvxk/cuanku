@@ -11,6 +11,7 @@ const addNew = async (formData) => {
 
   // Log data yang diterima (untuk debugging)
   console.log({ title, type, amount });
+  console.log(new Date().toLocaleString());
 
   // Setelah data tersimpan, lakukan revalidasi
   revalidatePath("/");

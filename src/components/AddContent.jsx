@@ -16,7 +16,6 @@ import { RadioGroup, RadioGroupItem } from "./ui/radio-group";
 import addNew from "@/action/addnew";
 import { useState, useTransition } from "react";
 import { useToast } from "@/hooks/use-toast";
-import { ToastAction } from "./ui/toast";
 
 const AddContent = () => {
   const [isPending, startTransition] = useTransition();
@@ -27,7 +26,6 @@ const AddContent = () => {
     startTransition(async () => {
       const result = await addNew(formData);
 
-      // Set pesan sukses jika berhasil
       if (result.success) {
         setIsOpen(false);
         toast({

@@ -1,4 +1,3 @@
-import localFont from "next/font/local";
 import { Roboto_Condensed, Bebas_Neue, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
