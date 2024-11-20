@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-const AccountContent = async ({ user }) => {
+const Account = async ({ user }) => {
   return (
     <div className="flex gap-4 self-start mt-4 mx-4 md:mx-0">
       <Image
@@ -24,4 +24,4 @@ const AccountContent = async ({ user }) => {
   );
 };
 
-export default AccountContent;
+export default Account;
