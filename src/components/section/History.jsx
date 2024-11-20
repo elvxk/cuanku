@@ -4,9 +4,7 @@ import { Separator } from "@radix-ui/react-separator";
 import { ScrollArea } from "../ui/scroll-area";
 import HistoryContent from "../HistoryContent";
 
-const History = () => {
-  const loop = 5;
-
+const History = async ({ balance }) => {
   return (
     <div className="w-full">
       <Card className="bg-white mx-4 md:mx-0">
@@ -18,23 +16,9 @@ const History = () => {
         <Separator className="bg-cgrey my-2" />
         <CardContent>
           <ScrollArea className="h-[400px]">
-            {Array.from({ length: loop }).map((_, index) => (
-              <HistoryContent
-                key={index}
-                date="16-10-2024"
-                title="Test Income"
-                value={999999}
-                income
-              />
-            ))}
-            {Array.from({ length: loop }).map((_, index) => (
-              <HistoryContent
-                key={index}
-                date="16-10-2024"
-                title="Test spend"
-                value={999999}
-              />
-            ))}
+            {balance.map((data, index) => {
+              return <HistoryContent key={index} data={data} />;
+            })}
           </ScrollArea>
         </CardContent>
       </Card>
