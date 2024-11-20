@@ -1,21 +1,21 @@
+import formattedAmount from "@/lib/formattedAmount";
 import { Separator } from "./ui/separator";
-import { FaRegTrashAlt } from "react-icons/fa";
+import BtnDelete from "./BtnDelete";
+import dateFormat from "@/lib/dateFormat";
 
-const HistoryContent = ({ date, title, value, income }) => {
+const HistoryContent = ({ data }) => {
   return (
     <>
-      <span className="text-xs">{date}</span>
+      <span className="text-xs">{dateFormat(data.createdAt)}</span>
       <div className="flex items-center justify-between gap-2">
-        <span className="text-sm lg:text-lg">{title}</span>
+        <span className="text-sm lg:text-lg">{data.title}</span>
         <div className="flex items-center gap-1">
           <span
-            className={`font-bold ${income ? "bg-cblue" : "bg-cpink"} px-2 text-sm lg:text-lg`}
+            className={`font-bold ${data.income ? "bg-cblue" : "bg-cpink"} px-2 text-sm lg:text-lg`}
           >
-            {income ? "+" : "-"} Rp. {value}
+            {data.income ? "+" : "-"} {formattedAmount(data.amount)}
           </span>
-          <button className="bg-cpink p-1 text-xs hover:scale-90 border-black border-2">
-            <FaRegTrashAlt />
-          </button>
+          <BtnDelete data={data} />
         </div>
       </div>
       <Separator className="bg-cgrey my-2" />
