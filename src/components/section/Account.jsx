@@ -7,7 +7,7 @@ const Account = async ({ user }) => {
         src={user.imageUrl}
         width={60}
         height={60}
-        alt={user.username}
+        alt={user.username ?? user.imageUrl}
         draggable={false}
         className="border-2 border-black rounded-full object-cover"
       />
