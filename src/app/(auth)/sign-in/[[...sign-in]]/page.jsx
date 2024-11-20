@@ -21,7 +21,7 @@ export default function Page() {
           {(isGlobalLoading) => (
             <>
               <SignIn.Step name="start">
-                <Card className="bg-white">
+                <Card className="bg-white mx-4 md:mx-0">
                   <CardHeader>
                     <div className="flex flex-col justify-center w-full items-center gap-4 my-2">
                       <Logo />

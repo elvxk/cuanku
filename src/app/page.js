@@ -13,12 +13,12 @@ export default async function Home() {
   return (
     <div className="flex flex-col justify-center w-full items-center min-h-screen gap-4 my-5">
       <Logo />
-      <Separator className="bg-cgrey my-2" />
+      <Separator className="bg-cgrey my-2 mx-4 md:mx-0" />
       <AccountContent user={user} />
       <Balance className="mt-5" />
       <History />
       <AddContent />
-      <Separator className="bg-cgrey my-2" />
+      <Separator className="bg-cgrey my-2 mx-4 md:mx-0" />
       <div className="flex items-center gap-4">
         <BtnManageUser />
         <BtnSignOut />

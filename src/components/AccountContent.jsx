@@ -2,7 +2,7 @@ import Image from "next/image";
 
 const AccountContent = async ({ user }) => {
   return (
-    <div className="flex gap-4 self-start mt-4">
+    <div className="flex gap-4 self-start mt-4 mx-4 md:mx-0">
       <Image
         src={user.imageUrl}
         width={60}
