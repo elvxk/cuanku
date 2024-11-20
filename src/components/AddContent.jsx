@@ -43,7 +43,7 @@ const AddContent = () => {
       }}
     >
       <DialogTrigger
-        className={`bg-white flex gap-2 justify-center items-center ${buttonVariants()}`}
+        className={`flex gap-2 justify-center items-center ${buttonVariants()} bg-main`}
       >
         <IoMdAddCircle /> Add New
       </DialogTrigger>
