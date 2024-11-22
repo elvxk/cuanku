@@ -16,21 +16,40 @@ import { RadioGroup, RadioGroupItem } from "./ui/radio-group";
 import addNew from "@/action/addnew";
 import { useState, useTransition } from "react";
 import { useToast } from "@/hooks/use-toast";
+import { FaCircleCheck } from "react-icons/fa6";
+import { IoWarning } from "react-icons/io5";
 
-const AddContent = () => {
+const AddContent = ({ user_id, currentBalance }) => {
   const [isPending, startTransition] = useTransition();
   const [isOpen, setIsOpen] = useState(false);
   const { toast } = useToast();
 
   const handleSubmit = async (formData) => {
     startTransition(async () => {
-      const result = await addNew(formData);
+      const result = await addNew(formData, user_id, currentBalance);
 
       if (result.success) {
         setIsOpen(false);
         toast({
-          title: "SUCCESS",
+          title: (
+            <div className="flex items-center gap-2">
+              <FaCircleCheck />
+              SUCCESS
+            </div>
+          ),
           description: result.message,
+        });
+      } else {
+        setIsOpen(false);
+        toast({
+          title: (
+            <div className="flex items-center gap-2">
+              <IoWarning />
+              FAILED
+            </div>
+          ),
+          description: result.message,
+          variant: "destructive",
         });
       }
     });

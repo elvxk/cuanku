@@ -4,13 +4,13 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "bunx prisma generate && next build",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
-    "@clerk/elements": "^0.19.4",
-    "@clerk/nextjs": "^6.4.0",
+    "@clerk/elements": "^0.19.5",
+    "@clerk/nextjs": "^6.4.1",
     "@hookform/resolvers": "^3.9.1",
     "@prisma/client": "5.22.0",
     "@radix-ui/react-alert-dialog": "^1.1.2",

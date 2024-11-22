@@ -1,3 +1,4 @@
+import formattedAmount from "@/lib/formattedAmount";
 import { Card, CardDescription, CardHeader, CardTitle } from "./ui/card";
 
 const BalanceContent = ({ icon, value, desc, className, ...props }) => {
@@ -6,9 +7,22 @@ const BalanceContent = ({ icon, value, desc, className, ...props }) => {
       <CardHeader>
         <CardTitle className="flex gap-4">
           {icon}
-          {value}
+          <span
+            className={`${+value < 0 && desc === "Balance" ? "bg-cpink" : ""}`}
+          >
+            {formattedAmount(value)}
+          </span>
         </CardTitle>
-        <CardDescription>{desc}</CardDescription>
+        <CardDescription>
+          {+value < 0 && desc === "Balance" ? (
+            <span className="bg-cpink">
+              Your current balance is minus, check your income and expenses
+              again
+            </span>
+          ) : (
+            desc
+          )}
+        </CardDescription>
       </CardHeader>
     </Card>
   );

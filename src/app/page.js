@@ -27,7 +27,7 @@ export default async function Home() {
       <Account user={user} />
       <Balance className="mt-5" balance={balance} />
       <History balance={balance} />
-      <AddContent />
+      <AddContent user_id={user.id} currentBalance={balance} />
       <Separator className="bg-cgrey my-2 mx-4 md:mx-0" />
       <div className="flex items-center gap-4">
         <BtnManageUser />

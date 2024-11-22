@@ -1,3 +1,4 @@
+"use client";
 import { FaRegTrashAlt } from "react-icons/fa";
 import {
   AlertDialog,
@@ -12,24 +13,17 @@ import {
 } from "./ui/alert-dialog";
 import formattedAmount from "@/lib/formattedAmount";
 import dateFormat from "@/lib/dateFormat";
-import prisma from "@/lib/prisma";
-import { revalidatePath } from "next/cache";
+import { useTransition } from "react";
+import deleteItem from "@/lib/deleteItem";
 
-const BtnDelete = async ({ data }) => {
-  const handleDelete = async () => {
-    try {
-      await prisma.balance.delete({
-        where: {
-          id: data.id, // Menghapus data berdasarkan id
-        },
-      });
+const BtnDelete = ({ data }) => {
+  const [isPending, startTransition] = useTransition();
 
-      revalidatePath("/"); // Atau rute yang sesuai
-    } catch (error) {
-      console.error("Failed to delete the record:", error);
-    }
+  const handleDelete = () => {
+    startTransition(() => {
+      deleteItem(data.id); // Panggil server action untuk menghapus data
+    });
   };
-
   return (
     <AlertDialog>
       <AlertDialogTrigger asChild>
@@ -54,7 +48,9 @@ const BtnDelete = async ({ data }) => {
         </AlertDialogHeader>
         <AlertDialogFooter>
           <AlertDialogCancel>Cancel</AlertDialogCancel>
-          <AlertDialogAction>Continue</AlertDialogAction>
+          <AlertDialogAction onClick={handleDelete}>
+            {isPending ? "Deleting..." : "Continue"}
+          </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>

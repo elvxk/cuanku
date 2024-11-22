@@ -4,7 +4,6 @@ import {
   FaWallet,
 } from "react-icons/fa6";
 import BalanceContent from "../BalanceContent";
-import formattedAmount from "@/lib/formattedAmount";
 
 const Balance = ({ className, balance }) => {
   const income = balance
@@ -22,19 +21,19 @@ const Balance = ({ className, balance }) => {
       <BalanceContent
         className="bg-cyellow"
         icon={<FaWallet />}
-        value={formattedAmount(balanceTotal)}
+        value={balanceTotal}
         desc="Balance"
       />
       <BalanceContent
         className="bg-cblue"
         icon={<FaArrowsDownToLine />}
-        value={formattedAmount(income)}
+        value={income}
         desc="Income"
       />
       <BalanceContent
         className="bg-cpink"
         icon={<FaMoneyBillTrendUp />}
-        value={formattedAmount(spend)}
+        value={spend}
         desc="Expenditure"
       />
     </div>
